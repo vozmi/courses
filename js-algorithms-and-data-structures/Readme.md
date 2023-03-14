@@ -5,7 +5,7 @@
 </p>
 
 ## Projects
-- ✅ [Palindrome Checker]("./palindrome-checker/Readme.md")
+- ✅ [Palindrome Checker](https://github.com/vozmi/freecodecamp-projects/tree/js-algorithms-and-data-structures/js-algorithms-and-data-structures/palindrome-checker)
 - Roman Numeral Converter
 - Caesars Cipher
 - Telephone Number Validator
