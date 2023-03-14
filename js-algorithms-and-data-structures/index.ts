@@ -1,3 +1,3 @@
-import {isPalindrome} from './palindrome-checker/palindrome';
+import {isPalindrome} from './palindrome-checker';
 
 export {isPalindrome};
