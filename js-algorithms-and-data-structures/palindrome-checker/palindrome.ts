@@ -7,6 +7,10 @@ import {reverseString, stripNonAlphaChars} from './lib';
  */
 export function isPalindrome(str: string) {
 	str = str.toLowerCase();
+
 	const strippedStr = stripNonAlphaChars(str);
-	return strippedStr === reverseString(strippedStr);
+
+	const isPalindrome = strippedStr === reverseString(strippedStr);
+
+	return isPalindrome;
 }
