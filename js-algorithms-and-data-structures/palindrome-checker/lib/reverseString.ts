@@ -3,7 +3,7 @@
  * @param str input string
  * @returns reversed string
  */
-export function reverseString(str: string): string {
+export function reverseString(str: string) {
 	return str
 		.split('') // Create array of chars
 		.reverse() // Reverse array of chars
