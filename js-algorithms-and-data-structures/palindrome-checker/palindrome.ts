@@ -1,14 +1,4 @@
-/**
- * Reverses a string
- * @param str input string
- * @returns reversed string
- */
-function reverseString(str: string) {
-	return str
-		.split('') // Create array of chars
-		.reverse() // Reverse array of chars
-		.join(''); // Join reversed array
-}
+import {reverseString} from './lib';
 
 /**
  * Check if string is palindrome
