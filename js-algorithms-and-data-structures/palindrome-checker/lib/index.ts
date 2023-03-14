@@ -1,2 +1,2 @@
-export * from './reverseString';
-export * from './stripNonAlphaChars';
+export * from './reverseString/reverseString';
+export * from './stripNonAlphaChars/stripNonAlphaChars';
