@@ -10,3 +10,6 @@
 - Caesars Cipher
 - Telephone Number Validator
 - Cash Register
+
+## About implementation
+These projects are written in `TypeScript` with `Jest` tests. Code style is checked with `ESLint` and `Babel` configured to build JS.
