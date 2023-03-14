@@ -5,7 +5,7 @@
 </p>
 
 ## Projects
-- ✅ [Palindrome Checker]("palindrome-checker/Readme.md")
+- ✅ [Palindrome Checker]("./palindrome-checker/Readme.md")
 - Roman Numeral Converter
 - Caesars Cipher
 - Telephone Number Validator
