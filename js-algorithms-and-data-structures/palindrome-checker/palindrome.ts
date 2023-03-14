@@ -1,4 +1,4 @@
-import {reverseString} from './lib';
+import {reverseString, stripNonAlphaChars} from './lib';
 
 /**
  * Check if string is palindrome
@@ -6,5 +6,6 @@ import {reverseString} from './lib';
  * @returns true if string is palindrome
  */
 export function isPalindrome(str: string): boolean {
-	return str === reverseString(str);
+	const strippedStr = stripNonAlphaChars(str);
+	return strippedStr === reverseString(strippedStr);
 }
