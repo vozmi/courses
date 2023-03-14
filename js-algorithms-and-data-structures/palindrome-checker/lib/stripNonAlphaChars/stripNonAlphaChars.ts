@@ -4,5 +4,5 @@
  * @returns string without non alphabetical characters (punctuation, spaces and symbols)
  */
 export function stripNonAlphaChars(str: string) {
-	return str;
+	return str.replace(/\W/g, '');
 }
