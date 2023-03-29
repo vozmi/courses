@@ -1,6 +1,12 @@
 type Alphabet = string[];
 
-function decryptCaesarCypher(encrypted: string, indent: number) {
+/**
+ * Decrypts string encrypted with caeser cypher
+ * @param encrypted encrypted string
+ * @param shift number of letters to shift
+ * @returns
+ */
+function decryptCaesarCypher(encrypted: string, shift: number) {
     const alphabetUpper: Alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     const alphabetLower: Alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
@@ -20,7 +26,7 @@ function decryptCaesarCypher(encrypted: string, indent: number) {
         if (encryptedCharPos === -1) {
             result += c; // Not character (i.e. number, symbol, e.t.c.)
         } else {
-            const decryptedCharPos = (encryptedCharPos + indent) % alphabet.length;
+            const decryptedCharPos = (encryptedCharPos + shift) % alphabet.length;
 
             result += alphabet[decryptedCharPos];
         }
