@@ -29,10 +29,10 @@ We'll also pass strings with special symbols, such as `2A3*3a2`, `2A3 3a2`, and 
  * @returns reversed string
  */
 function reverseString(str: string) {
-	return str
-		.split('') // Create array of chars
-		.reverse() // Reverse array of chars
-		.join(''); // Join reversed array to string
+    return str
+        .split('') // Create array of chars
+        .reverse() // Reverse array of chars
+        .join(''); // Join reversed array to string
 }
 ```
 
@@ -43,8 +43,8 @@ function reverseString(str: string) {
  * @returns string without non alphabetical characters (punctuation, spaces and symbols)
  */
 function stripNonAlphaChars(str: string) {
-	const pattern = /[^A-Za-z0-9]/g;
-	return str.replace(pattern, '');
+    const pattern = /[^A-Za-z0-9]/g;
+    return str.replace(pattern, '');
 }
 ```
 
@@ -56,13 +56,13 @@ function stripNonAlphaChars(str: string) {
  * @returns true if string is palindrome
  */
 export function isPalindrome(str: string) {
-	str = str.toLowerCase();
+    str = str.toLowerCase();
 
-	const strippedStr = stripNonAlphaChars(str);
+    const strippedStr = stripNonAlphaChars(str);
 
-	const isPalindrome = strippedStr === reverseString(strippedStr);
+    const isPalindrome = strippedStr === reverseString(strippedStr);
 
-	return isPalindrome;
+    return isPalindrome;
 }
 
 ```
