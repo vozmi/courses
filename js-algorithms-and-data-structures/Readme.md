@@ -6,7 +6,7 @@
 
 ## Projects
 - ✅ [Palindrome Checker](https://github.com/vozmi/freecodecamp-projects/tree/js-algorithms-and-data-structures/js-algorithms-and-data-structures/palindrome-checker)
-- Roman Numeral Converter
+- ✅ [Roman Numeral Converter](https://github.com/vozmi/freecodecamp-projects/tree/js-algorithms-and-data-structures/js-algorithms-and-data-structures/roman-numeral-converter)
 - Caesars Cipher
 - Telephone Number Validator
 - Cash Register
