@@ -6,11 +6,11 @@ import {reverseString, stripNonAlphaChars} from './lib';
  * @returns true if string is palindrome
  */
 export function isPalindrome(str: string) {
-	str = str.toLowerCase();
+    str = str.toLowerCase();
 
-	const strippedStr = stripNonAlphaChars(str);
+    const strippedStr = stripNonAlphaChars(str);
 
-	const isPalindrome = strippedStr === reverseString(strippedStr);
+    const isPalindrome = strippedStr === reverseString(strippedStr);
 
-	return isPalindrome;
+    return isPalindrome;
 }
