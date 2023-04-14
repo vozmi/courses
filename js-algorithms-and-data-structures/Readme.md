@@ -7,8 +7,8 @@
 ## Projects
 - ✅ [Palindrome Checker](https://github.com/vozmi/freecodecamp-projects/tree/js-algorithms-and-data-structures/js-algorithms-and-data-structures/palindrome-checker)
 - ✅ [Roman Numeral Converter](https://github.com/vozmi/freecodecamp-projects/tree/js-algorithms-and-data-structures/js-algorithms-and-data-structures/roman-numeral-converter)
-- Caesars Cipher
-- Telephone Number Validator
+- ✅ [Caesars Cipher](https://github.com/vozmi/freecodecamp-projects/tree/js-algorithms-and-data-structures/js-algorithms-and-data-structures/caesar-cipher)
+- ✅ [Telephone Number Validator](https://github.com/vozmi/freecodecamp-projects/tree/js-algorithms-and-data-structures/js-algorithms-and-data-structures/phone-number-validator)
 - Cash Register
 
 ## About implementation
