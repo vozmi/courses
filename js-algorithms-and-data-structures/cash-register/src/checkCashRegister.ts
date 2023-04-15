@@ -1,38 +1,7 @@
-type CurrencyUnit =
-    | 'PENNY'
-    | 'NICKEL'
-    | 'DIME'
-    | 'QUARTER'
-    | 'ONE'
-    | 'FIVE'
-    | 'TEN'
-    | 'TWENTY'
-    | 'ONE HUNDRED';
-
-type CashInDrawer = Array<[CurrencyUnit, number]>;
 
 /* eslint-disable @typescript-eslint/naming-convention */
-type CashDictionary = Record<CurrencyUnit, number>;
-
-const cashDictionary: CashDictionary = {
-    PENNY: 0.01,
-    NICKEL: 0.05,
-    DIME: 0.1,
-    QUARTER: 0.25,
-    ONE: 1,
-    FIVE: 5,
-    TEN: 10,
-    TWENTY: 20,
-    'ONE HUNDRED': 100,
-};
-/* eslint-enable @typescript-eslint/naming-convention */
-
-type CashRegisterStatus = 'OPEN' | 'CLOSED' | 'INSUFFICIENT_FUNDS';
-
-type CashRegisterState = {
-    status: CashRegisterStatus;
-    change: CashInDrawer;
-};
+import {type CashRegisterState, type CashDictionary, type CashInDrawer} from './checkCashRegister.types';
+import {currencyDictionary, toCashInDrawer} from './lib/currencyDictionary';
 
 /**
  * Checks cash register (ability to make purchase and how many change should be returned)
@@ -40,6 +9,59 @@ type CashRegisterState = {
  * @param cash payment
  * @param cid cash-in-drawer
  */
-export function checkCashRegister(price: number, cash: number, cid: CashInDrawer): CashRegisterState {
-    throw 'Not implemented!';
+export function checkCashRegister(
+    price: number,
+    cash: number,
+    cid: CashInDrawer,
+): CashRegisterState {
+    let delta = cash - price;
+
+    if (delta < 0) {
+        throw new Error('Error: price is more than given cash!');
+    }
+
+    const sortedCid = cid.sort(([cur1, am1], [cur2, am2]) => am2 - am1); // Sort from higher to lower amount
+
+    const change: CashDictionary = {
+        PENNY: 0,
+        NICKEL: 0,
+        DIME: 0,
+        QUARTER: 0,
+        ONE: 0,
+        FIVE: 0,
+        TEN: 0,
+        TWENTY: 0,
+        'ONE HUNDRED': 0,
+    };
+
+    for (const cidEl of sortedCid) {
+        let [currenctUnit, amount] = cidEl;
+
+        const unitAmount = currencyDictionary[currenctUnit];
+        const unitsToGive = Math.floor(delta / unitAmount);
+
+        if (unitsToGive > 0) {
+            const changeInCurrency = unitAmount * unitsToGive;
+
+            amount -= changeInCurrency;
+
+            change[currenctUnit] += changeInCurrency;
+
+            delta -= changeInCurrency;
+        }
+    }
+
+    if (delta > 0) {
+        return {status: 'INSUFFICIENT_FUNDS', change: []};
+    }
+
+    if (delta < 0) {
+        throw new Error('Unexpected error: the change is more than required!');
+    }
+
+    if (sortedCid.every(([_, amount]) => amount === 0)) {
+        return {status: 'CLOSED', change: toCashInDrawer(change)};
+    }
+
+    return {status: 'OPEN', change: toCashInDrawer(change).filter(([curr, amount]) => amount !== 0)};
 }
