@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {
-    type CashRegisterState,
     type CashDictionary,
     type CashInDrawer,
+    type CashRegisterState,
 } from './checkCashRegister.types';
 import {convert} from './lib/convert';
 import {currencyDictionary} from './lib/currencyDictionary';
