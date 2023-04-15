@@ -12,14 +12,3 @@ export const currencyDictionary: CashDictionary = {
     TWENTY: 20,
     'ONE HUNDRED': 100,
 };
-
-export const toCashInDrawer = (dict: CashDictionary): CashInDrawer => {
-    const cid: CashInDrawer = [];
-
-    for (const entry of Object.entries(dict)) {
-        const [key, val] = entry as CidTuple;
-        cid.push([key, val]);
-    }
-
-    return cid;
-};
