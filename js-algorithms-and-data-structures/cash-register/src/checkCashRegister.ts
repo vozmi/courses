@@ -1,6 +1,9 @@
-
 /* eslint-disable @typescript-eslint/naming-convention */
-import {type CashRegisterState, type CashDictionary, type CashInDrawer} from './checkCashRegister.types';
+import {
+    type CashRegisterState,
+    type CashDictionary,
+    type CashInDrawer,
+} from './checkCashRegister.types';
 import {currencyDictionary, toCashInDrawer} from './lib/currencyDictionary';
 
 /**
@@ -14,13 +17,15 @@ export function checkCashRegister(
     cash: number,
     cid: CashInDrawer,
 ): CashRegisterState {
-    let delta = cash - price;
+    let delta = Number(Number(cash - price).toFixed(2));
 
     if (delta < 0) {
         throw new Error('Error: price is more than given cash!');
     }
 
-    const sortedCid = cid.sort(([cur1, am1], [cur2, am2]) => am2 - am1); // Sort from higher to lower amount
+    const sortedCid = cid.sort(
+        ([cur1], [cur2]) => currencyDictionary[cur2] - currencyDictionary[cur1],
+    ); // Sort from higher to lower amount
 
     const change: CashDictionary = {
         PENNY: 0,
@@ -39,16 +44,24 @@ export function checkCashRegister(
 
         const unitAmount = currencyDictionary[currenctUnit];
         const unitsToGive = Math.floor(delta / unitAmount);
-        const availableUnitsCount = amount / unitAmount;
+        const availableUnitsCount = Math.floor(amount / unitAmount);
 
         if (unitsToGive > 0) {
-            const changeInCurrency = unitAmount * (availableUnitsCount >= unitsToGive ? unitsToGive : availableUnitsCount);
+            let changeInCurrency
+                = unitAmount
+                * (availableUnitsCount >= unitsToGive
+                    ? unitsToGive
+                    : availableUnitsCount);
+            changeInCurrency = Number(Number(changeInCurrency).toFixed(2));
 
+            console.log(`sortedCid before amount ${currenctUnit} amount -= ${changeInCurrency}`, sortedCid);
             amount -= changeInCurrency;
+            console.log(`sortedCid after amount ${currenctUnit} amount -= ${changeInCurrency}`, sortedCid);
 
             change[currenctUnit] += changeInCurrency;
 
             delta -= changeInCurrency;
+            delta = Number(Number(delta).toFixed(2));
         }
     }
 
@@ -60,9 +73,17 @@ export function checkCashRegister(
         throw new Error('Unexpected error: the change is more than required!');
     }
 
+    // Console.log('change', change);
+    // console.log('sortedCid', sortedCid);
+
     if (sortedCid.every(([_, amount]) => amount === 0)) {
-        return {status: 'CLOSED', change: toCashInDrawer(change)};
+        return {status: 'CLOSED', change: toCashInDrawer(change).reverse()};
     }
 
-    return {status: 'OPEN', change: toCashInDrawer(change).filter(([curr, amount]) => amount !== 0)};
+    return {
+        status: 'OPEN',
+        change: toCashInDrawer(change)
+            .filter(([curr, amount]) => amount !== 0)
+            .reverse(),
+    };
 }
