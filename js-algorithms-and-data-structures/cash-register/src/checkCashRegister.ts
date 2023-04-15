@@ -39,9 +39,10 @@ export function checkCashRegister(
 
         const unitAmount = currencyDictionary[currenctUnit];
         const unitsToGive = Math.floor(delta / unitAmount);
+        const availableUnitsCount = amount / unitAmount;
 
         if (unitsToGive > 0) {
-            const changeInCurrency = unitAmount * unitsToGive;
+            const changeInCurrency = unitAmount * (availableUnitsCount >= unitsToGive ? unitsToGive : availableUnitsCount);
 
             amount -= changeInCurrency;
 
