@@ -4,7 +4,8 @@ import {
     type CashDictionary,
     type CashInDrawer,
 } from './checkCashRegister.types';
-import {currencyDictionary, toCashInDrawer} from './lib/currencyDictionary';
+import {convert} from './lib/convert';
+import {currencyDictionary} from './lib/currencyDictionary';
 
 /**
  * Checks cash register (ability to make purchase and how many change should be returned)
@@ -81,11 +82,11 @@ export function checkCashRegister(
     }
 
     if (isCidEqualChange) {
-        return {status: 'CLOSED', change: toCashInDrawer(change)};
+        return {status: 'CLOSED', change: convert.toCashInDrawer(change)};
     }
 
     return {
         status: 'OPEN',
-        change: toCashInDrawer(change).filter(([curr, amount]) => amount !== 0).reverse(),
+        change: convert.toCashInDrawer(change).filter(([curr, amount]) => amount !== 0).reverse(),
     };
 }
