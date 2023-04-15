@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {type CashInDrawer, type CashDictionary, CurrencyUnit, type CidTuple} from '../checkCashRegister.types';
+import {type CashDictionary} from '../checkCashRegister.types';
 
 export const currencyDictionary: CashDictionary = {
     PENNY: 0.01,
