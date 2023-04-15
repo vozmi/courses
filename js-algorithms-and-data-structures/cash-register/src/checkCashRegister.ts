@@ -40,7 +40,7 @@ export function checkCashRegister(
     };
 
     for (const cidEl of sortedCid) {
-        let [currenctUnit, amount] = cidEl;
+        const [currenctUnit, amount] = cidEl;
 
         const unitAmount = currencyDictionary[currenctUnit];
         const unitsToGive = Math.floor(delta / unitAmount);
@@ -53,10 +53,6 @@ export function checkCashRegister(
                     ? unitsToGive
                     : availableUnitsCount);
             changeInCurrency = Number(Number(changeInCurrency).toFixed(2));
-
-            console.log(`sortedCid before amount ${currenctUnit} amount -= ${changeInCurrency}`, sortedCid);
-            amount -= changeInCurrency;
-            console.log(`sortedCid after amount ${currenctUnit} amount -= ${changeInCurrency}`, sortedCid);
 
             change[currenctUnit] += changeInCurrency;
 
@@ -73,17 +69,23 @@ export function checkCashRegister(
         throw new Error('Unexpected error: the change is more than required!');
     }
 
-    // Console.log('change', change);
-    // console.log('sortedCid', sortedCid);
+    let isCidEqualChange = true;
+    for (const cidEl of cid) {
+        const [cidCurrency, cidAmount] = cidEl;
+        const changeAmount = change[cidCurrency];
 
-    if (sortedCid.every(([_, amount]) => amount === 0)) {
-        return {status: 'CLOSED', change: toCashInDrawer(change).reverse()};
+        if (cidAmount !== changeAmount) {
+            isCidEqualChange = false;
+            break;
+        }
+    }
+
+    if (isCidEqualChange) {
+        return {status: 'CLOSED', change: toCashInDrawer(change)};
     }
 
     return {
         status: 'OPEN',
-        change: toCashInDrawer(change)
-            .filter(([curr, amount]) => amount !== 0)
-            .reverse(),
+        change: toCashInDrawer(change).filter(([curr, amount]) => amount !== 0).reverse(),
     };
 }
