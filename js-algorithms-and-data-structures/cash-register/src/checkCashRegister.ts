@@ -4,6 +4,8 @@ import {
     type CashInDrawer,
     type CashRegisterState,
 } from './checkCashRegister.types';
+import {cdUtils} from './lib/cdUtils';
+import {cidUtils} from './lib/cidUtils';
 import {convert} from './lib/convert';
 import {currencyDictionary} from './lib/currencyDictionary';
 
@@ -70,18 +72,10 @@ export function checkCashRegister(
         throw new Error('Unexpected error: the change is more than required!');
     }
 
-    let isCidEqualChange = true;
-    for (const cidEl of cid) {
-        const [cidCurrency, cidAmount] = cidEl;
-        const changeAmount = change[cidCurrency];
+    const cidDict = convert.toCashDictionary(cid);
+    const isEqual = cdUtils.isEqual(change, cidDict);
 
-        if (cidAmount !== changeAmount) {
-            isCidEqualChange = false;
-            break;
-        }
-    }
-
-    if (isCidEqualChange) {
+    if (isEqual) {
         return {status: 'CLOSED', change: convert.toCashInDrawer(change)};
     }
 
