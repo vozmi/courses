@@ -24,7 +24,7 @@ int main(void)
         }
 
         // print first pyramid blocks
-        for (int firstPyramidBlocks = blocks; firstPyramidBlocks > 0; firstPyramidBlocks--)
+        for (int first_pyramid_blocks = blocks; first_pyramid_blocks > 0; first_pyramid_blocks--)
         {
             printf("#");
         }
@@ -33,7 +33,7 @@ int main(void)
         printf("  ");
 
         // print second pyramid blocks
-        for (int secondPyramidBlocks = blocks; secondPyramidBlocks > 0; secondPyramidBlocks--)
+        for (int second_pyramid_blocks = blocks; second_pyramid_blocks > 0; second_pyramid_blocks--)
         {
             printf("#");
         }
