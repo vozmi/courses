@@ -1,6 +1,12 @@
 import { NextResponse } from 'next/server';
 
-const posts = [
+export type Post = {
+  title: string;
+  slug: string;
+  content: string;
+}
+
+const posts: Post[] = [
   {
     title: 'Hello, world!',
     slug: 'hello',
