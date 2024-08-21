@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto } from 'next/font/google';
 import "./globals.css";
 import { NavBar } from '../widgets/navigation';
+import AuthProvider from './AuthProvider';
 
 const roboto = Roboto({weight: ['400', '500', '700'], subsets: ['latin']});
 
@@ -17,11 +18,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={roboto.className}>
-      <NavBar />
-      {children}
-      </body>
-    </html>
+    <AuthProvider>
+      <html lang="en">
+        <body className={roboto.className}>
+        <NavBar />
+        {children}
+        </body>
+      </html>
+    </AuthProvider>
   );
 }
