@@ -21,6 +21,13 @@ $gap: 1.5rem;
     margin: 0;
     padding: 0;
     justify-content: space-between;
+    align-items: center;
     gap: $gap;
+
+    li.auth_buttons {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
   }
 }

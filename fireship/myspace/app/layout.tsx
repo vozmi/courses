@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Roboto } from 'next/font/google';
 import "./globals.css";
-import { NavBar } from '../widgets/navigation';
-import AuthProvider from './AuthProvider';
+import { AuthProvider } from '@/shared/auth/ui';
+import { NavBar } from '@/widgets/navigation';
 
 const roboto = Roboto({weight: ['400', '500', '700'], subsets: ['latin']});
 
@@ -21,8 +21,8 @@ export default function RootLayout({
     <AuthProvider>
       <html lang="en">
         <body className={roboto.className}>
-        <NavBar />
-        {children}
+          <NavBar />
+          {children}
         </body>
       </html>
     </AuthProvider>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from './NavBar.module.scss';
+import { SignInButton, SignOutButton } from '@/features/auth/ui';
 
 export const NavBar = () => {
   return (
@@ -17,6 +18,10 @@ export const NavBar = () => {
         </li>
         <li>
           <Link href="/users">Users</Link>
+        </li>
+        <li className={styles.auth_buttons}>
+          <SignInButton />
+          <SignOutButton />
         </li>
       </ul>
     </nav>
