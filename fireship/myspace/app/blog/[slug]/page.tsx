@@ -1,5 +1,4 @@
 import { Post } from '@/app/api/content/route'
-import React from 'react'
 
 export const revalidate = 420
 

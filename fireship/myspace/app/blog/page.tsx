@@ -1,4 +1,3 @@
-import React from 'react'
 import { Post } from '../api/content/route'
 import Link from 'next/link'
 
