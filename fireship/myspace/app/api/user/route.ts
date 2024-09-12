@@ -1,11 +1,12 @@
-import {getServerSession} from "next-auth";
 import {authOptions} from "@/app/api/auth/[...nextauth]/route";
+import {getServerSession} from "next-auth";
 import {redirect} from "next/navigation";
-import {ProfileEditWidget} from "@/widgets/user/ui";
 import {getSessionToken} from "@/shared/auth/model";
 import {getUserBySessionToken} from "@/features/user/model/getUserBySession";
+import {prisma} from "@/shared/db/lib";
+import {NextResponse} from "next/server";
 
-export default async function DashboardPage() {
+export async function PUT(req: Request) {
   const session = await getServerSession(authOptions);
 
   if (!session) {
@@ -17,12 +18,20 @@ export default async function DashboardPage() {
     throw new Error('No session token found');
   }
 
-  const user = await getUserBySessionToken(sessionToken);
+  const data = await req.json();
+  data.age = Number(data.age);
 
-  return (
-    <div>
-      <h1>Dashboard</h1>
-      <ProfileEditWidget user={user!} />
-    </div>
-  );
+  const user = await getUserBySessionToken(sessionToken);
+  if (!user) {
+    throw new Error('No user found');
+  }
+
+  const updatedUser = await prisma.user.update({
+    where: {
+      id: user.id,
+    },
+    data,
+  });
+
+  return NextResponse.json(updatedUser);
 }
