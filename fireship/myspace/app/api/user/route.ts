@@ -1,8 +1,7 @@
 import {authOptions} from "@/app/api/auth/[...nextauth]/route";
 import {getServerSession} from "next-auth";
 import {redirect} from "next/navigation";
-import {getSessionToken} from "@/shared/auth/model";
-import {getUserBySessionToken} from "@/features/user/model/getUserBySession";
+import {getCurrentUser} from "@/features/user/model/getUserBySession";
 import {prisma} from "@/shared/db/lib";
 import {NextResponse} from "next/server";
 
@@ -13,18 +12,13 @@ export async function PUT(req: Request) {
     redirect('/api/auth/signin');
   }
 
-  const sessionToken = getSessionToken();
-  if (!sessionToken) {
-    throw new Error('No session token found');
+  const user = await getCurrentUser();
+  if (!user) {
+    return NextResponse.json({error: 'Cannot get current user!'}, {status: 500});
   }
 
   const data = await req.json();
   data.age = Number(data.age);
-
-  const user = await getUserBySessionToken(sessionToken);
-  if (!user) {
-    throw new Error('No user found');
-  }
 
   const updatedUser = await prisma.user.update({
     where: {
