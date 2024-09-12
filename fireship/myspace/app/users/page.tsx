@@ -1,4 +1,3 @@
-import React from 'react';
 import {prisma} from "@/shared/db/lib";
 import {UserCard} from "@/features/user/ui/UserCard";
 
