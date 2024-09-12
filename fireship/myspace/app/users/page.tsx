@@ -7,8 +7,8 @@ export default async function UsersPage() {
 
   return (
     <div>
-      {users.map(({id, name, email, image, age}) => (
-        <UserCard key={id} id={id} name={name} email={email} image={image} age={age} />
+      {users.map((user) => (
+        <UserCard key={user.id} user={user} />
       ))}
     </div>
   );
