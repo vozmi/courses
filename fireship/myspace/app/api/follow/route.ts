@@ -1,6 +1,6 @@
-import {getCurrentUser} from "@/features/user/model/getUserBySession";
+import {getCurrentUser} from "@/entities/user/model/getUserBySession";
 import {NextRequest, NextResponse} from "next/server";
-import {prisma} from "@/shared/db/lib";
+import {prisma} from "@/shared/lib/prisma-client";
 
 export async function POST(req: NextRequest) {
   const user = await getCurrentUser();

@@ -1,9 +1,9 @@
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/app/api/auth/[...nextauth]/route";
 import {redirect} from "next/navigation";
-import {ProfileEditWidget} from "@/widgets/user/ui";
-import {getSessionToken} from "@/shared/auth/model";
-import {getUserBySessionToken} from "@/features/user/model/getUserBySession";
+import {getSessionToken} from "@/shared/lib/auth";
+import {getUserBySessionToken} from "@/entities/user/model";
+import {UpdateProfileForm} from "@/features/update-profile";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
@@ -22,7 +22,10 @@ export default async function DashboardPage() {
   return (
     <div>
       <h1>Dashboard</h1>
-      <ProfileEditWidget user={user!} />
+      <div>
+        <h2>Update Your Profile</h2>
+        <UpdateProfileForm user={user!} />
+      </div>
     </div>
   );
 }

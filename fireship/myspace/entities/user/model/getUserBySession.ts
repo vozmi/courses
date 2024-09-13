@@ -1,5 +1,5 @@
-import {prisma} from "@/shared/db/lib";
-import {getSessionToken} from "@/shared/auth/model";
+import {prisma} from "@/shared/lib/prisma-client";
+import {getSessionToken} from "@/shared/lib/auth";
 
 /**
  * Gets the user by session token

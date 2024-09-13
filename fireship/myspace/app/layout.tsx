@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from 'next/font/google';
 import "./globals.css";
-import { AuthProvider } from '@/shared/auth/ui';
+import { AuthProvider } from '@/shared/lib/auth';
 import { NavBar } from '@/widgets/navigation';
 
 const roboto = Roboto({weight: ['400', '500', '700'], subsets: ['latin']});

@@ -1,5 +1,5 @@
-import {prisma} from "@/shared/db/lib";
-import {UserCard} from "@/features/user/ui/UserCard";
+import {prisma} from "@/shared/lib/prisma-client";
+import {UserCard} from "@/entities/user/ui/user-card";
 
 export default async function UsersPage() {
 

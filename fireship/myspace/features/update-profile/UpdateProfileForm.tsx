@@ -1,10 +1,10 @@
 'use client';
 
 import {User} from "@prisma/client";
-import {ProfileForm} from "@/features/user/ui/ProfileForm";
-import {UserFormData} from "@/features/user/model";
+import {UserFormData} from "@/entities/user/model";
+import {UserForm} from "@/entities/user/ui/user-form";
 
-export function ProfileEditWidget({user}: { user: User }) {
+export function UpdateProfileForm({user}: { user: User }) {
   const updateUser = async (userData: UserFormData) => {
     const res = await fetch('/api/user', {
       method: 'PUT',
@@ -18,9 +18,6 @@ export function ProfileEditWidget({user}: { user: User }) {
   };
 
   return (
-    <div>
-      <h2>Edit Your Profile</h2>
-      <ProfileForm user={user} onSubmit={updateUser} />
-    </div>
+    <UserForm user={user} onSubmit={updateUser} />
   );
 }

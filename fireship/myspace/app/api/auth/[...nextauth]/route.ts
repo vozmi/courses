@@ -1,4 +1,4 @@
-import { prisma } from '@/shared/db/lib';
+import { prisma } from '@/shared/lib/prisma-client';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import type { NextAuthOptions } from "next-auth";
 import NextAuth from 'next-auth';

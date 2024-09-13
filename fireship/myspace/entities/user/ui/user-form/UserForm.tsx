@@ -1,6 +1,6 @@
 import React from "react";
-import {UserFormData} from "@/features/user/model";
-import styles from "./ProfileForm.module.scss";
+import {UserFormData} from "@/entities/user/model";
+import styles from "./UserForm.module.scss";
 
 type Props = {
   user?: UserFormData
@@ -8,12 +8,12 @@ type Props = {
 }
 
 /**
- * ProfileForm
+ * UserForm
  * @param user
  * @param onSubmit
  * @constructor
  */
-export const ProfileForm: React.FC<Props> = ({user, onSubmit}: Props) => {
+export const UserForm: React.FC<Props> = ({user, onSubmit}: Props) => {
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

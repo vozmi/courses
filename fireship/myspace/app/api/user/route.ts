@@ -1,8 +1,8 @@
 import {authOptions} from "@/app/api/auth/[...nextauth]/route";
 import {getServerSession} from "next-auth";
 import {redirect} from "next/navigation";
-import {getCurrentUser} from "@/features/user/model/getUserBySession";
-import {prisma} from "@/shared/db/lib";
+import {getCurrentUser} from "@/entities/user/model/getUserBySession";
+import {prisma} from "@/shared/lib/prisma-client";
 import {NextResponse} from "next/server";
 
 export async function PUT(req: Request) {
