@@ -2,7 +2,7 @@
 import React, {useTransition} from 'react';
 import {User} from "@prisma/client";
 import {follow, unfollow} from "../model";
-import {useSession} from "next-auth/react";
+import {useSessionUser} from "@/shared/lib/auth/useSessionUser";
 
 type Props = {
   userId: User['id'];
@@ -12,10 +12,7 @@ type Props = {
 export function FollowButton({userId, isFollowing}: Props) {
   const [isPending, startTransition] = useTransition();
 
-  const {data: session} = useSession();
-  if (!session) return null;
-
-  const {user: currentUser} = session;
+  const currentUser = useSessionUser();
   if (!currentUser) return null;
 
   const startFollowing = () => startTransition(() => follow(currentUser.id, userId));
