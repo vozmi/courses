@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Social Media Platform Project - Built During Next.js Full Course
 
-## Getting Started
+This repository contains the completed project I built while taking the **Next.js - The Full Course**. The course provided an in-depth exploration of the Next.js App Router, React Server Components (RSC), and full-stack development using PostgreSQL and Prisma.
 
-First, run the development server:
+## Course Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+During the course, I learned everything necessary to be productive with modern **Next.js**, focusing on the **App Router** introduced in version 13.2. The key topics covered include:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **React Server Components (RSC)**: Design patterns and how to use them effectively.
+- **Rendering Strategies**: How to choose the best rendering strategy for different use cases.
+- **Dynamic Routing**: Best practices for organizing a project.
+- **Advanced Data Fetching and Caching**: Optimizing the performance of Next.js apps.
+- **User Authentication**: Implementing secure authentication using **Auth.js**.
+- **Data Modeling**: Working with **Postgres** and **Prisma** to manage data.
+- **Migration**: How to migrate existing projects to the latest version of Next.js.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+As part of the course, I built a **Social Media Platform** inspired by websites like MySpace and Facebook. Key features of the project include:
 
-## Learn More
+- User authentication and management.
+- User relationships (friending).
+- Dynamic routing for profile pages.
+- Data-fetching strategies for user data.
+- Optimized caching and performance handling.
 
-To learn more about Next.js, take a look at the following resources:
+The goal of this project was to get hands-on experience with Next.js's **rendering**, **data-fetching**, and **caching** strategies.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **React Server Components**: Practical usage of RSC for efficient rendering.
+- **App Router**: Dynamic routing with Next.js 13.2 and beyond.
+- **Data Management**: Postgres and Prisma for robust data handling.
+- **Authentication**: Secure user authentication with **Auth.js**.
+- **Caching & Performance**: Advanced caching strategies for optimal performance.
