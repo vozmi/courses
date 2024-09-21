@@ -1,5 +1,9 @@
 import Image from "next/image";
 import {prisma} from "@/shared/lib/prisma-client";
+import {FollowButton} from "@/features/follow";
+import {isFollowing} from "@/entities/user/model/isFollowing";
+import {getServerSession} from "next-auth";
+import {authOptions} from "@/app/api/auth/[...nextauth]/route";
 
 type Props = {
   params: {
@@ -23,6 +27,9 @@ export default async function UserPage({params: {id}}: Props) {
     return <div>User not found</div>;
   }
 
+  const session = await getServerSession(authOptions);
+  const follows = session?.user?.id ? await isFollowing(session.user.id, user.id) : null;
+
   const {name, email, image, age} = user;
 
   return (
@@ -31,6 +38,8 @@ export default async function UserPage({params: {id}}: Props) {
       {email && <p>Email: {email}</p>}
       {age && <p>Age: {age}</p>}
       {image && <Image src={image} alt={name ?? 'User Image'} width={300} height={225} style={{objectFit: 'cover'}} />}
+
+      {typeof follows === 'boolean' && <FollowButton userId={user.id} isFollowing={follows} />}
     </div>
   );
 }

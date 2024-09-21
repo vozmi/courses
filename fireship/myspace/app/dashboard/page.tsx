@@ -2,8 +2,8 @@ import {getServerSession} from "next-auth";
 import {authOptions} from "@/app/api/auth/[...nextauth]/route";
 import {redirect} from "next/navigation";
 import {getSessionToken} from "@/shared/lib/auth";
-import {getUserBySessionToken} from "@/entities/user/model";
 import {UpdateProfileForm} from "@/features/update-profile";
+import {prisma} from "@/shared/lib/prisma-client";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
@@ -17,14 +17,26 @@ export default async function DashboardPage() {
     throw new Error('No session token found');
   }
 
-  const user = await getUserBySessionToken(sessionToken);
+  const {user} = session;
+  if (!user) {
+    throw new Error('No user found');
+  }
+
+  const dbUser = await prisma.user.findUnique({
+    where: {
+      id: user.id,
+    }
+  });
+  if (!dbUser) {
+    throw new Error('User not found in database');
+  }
 
   return (
     <div>
       <h1>Dashboard</h1>
       <div>
         <h2>Update Your Profile</h2>
-        <UpdateProfileForm user={user!} />
+        <UpdateProfileForm user={dbUser} />
       </div>
     </div>
   );
