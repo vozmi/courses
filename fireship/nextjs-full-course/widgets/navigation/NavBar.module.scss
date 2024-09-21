@@ -1,0 +1,33 @@
+$gap: 1.5rem;
+
+.nav {
+  display: flex;
+  height: 64px;
+  padding: 0 $gap;
+  align-items: center;
+  justify-content: space-between;
+  gap: $gap;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+
+  a {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: space-between;
+    align-items: center;
+    gap: $gap;
+
+    li.auth_buttons {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+  }
+}

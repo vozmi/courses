@@ -1,0 +1,8 @@
+body {
+  margin: 0;
+}
+
+:root {
+  --bg-primary: #1677ff ;
+  --text-primary: #fff;
+}
