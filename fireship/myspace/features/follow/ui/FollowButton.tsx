@@ -19,7 +19,9 @@ export function FollowButton({userId, isFollowing}: Props) {
   const startUnfollowing = () => startTransition(() => unfollow(currentUser.id, userId));
 
   return (
-    isFollowing ? <button onClick={startUnfollowing} disabled={isPending}>Unfollow</button> :
-      <button onClick={startFollowing} disabled={isPending}>Follow</button>
+    <>
+      {isFollowing ? <button onClick={startUnfollowing} disabled={isPending}>Unfollow</button> :
+        <button onClick={startFollowing} disabled={isPending}>Follow</button>}
+    </>
   );
 }
