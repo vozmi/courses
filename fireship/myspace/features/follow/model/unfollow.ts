@@ -21,5 +21,5 @@ export async function unfollow(followerId: string, followingId: string) {
     },
   });
 
-  revalidatePath('/users/[id]');
+  revalidatePath(`/users/${followingId}`);
 }

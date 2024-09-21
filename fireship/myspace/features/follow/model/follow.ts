@@ -10,5 +10,5 @@ export async function follow (followerId: string, followingId: string) {
     },
   });
 
-  revalidatePath('/users/[id]');
+  revalidatePath(`/users/${followingId}`);
 }
