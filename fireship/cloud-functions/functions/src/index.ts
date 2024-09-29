@@ -9,11 +9,14 @@
 
 import {onRequest} from "firebase-functions/v2/https";
 import * as logger from "firebase-functions/logger";
+import * as admin from "firebase-admin";
 
-// Start writing functions
-// https://firebase.google.com/docs/functions/typescript
+admin.initializeApp();
 
 export const helloWorld = onRequest((request, response) => {
+  const name = request.query.name;
+
   logger.info("Hello logs!", {structuredData: true});
-  response.send("Hello from Firebase!");
+
+  response.send(`Hello ${name || "World"}!`);
 });
