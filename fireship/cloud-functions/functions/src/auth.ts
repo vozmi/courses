@@ -3,7 +3,7 @@ import * as admin from "firebase-admin";
 
 const db = admin.firestore();
 
-export const createUserRecord = functions.auth.user().onCreate(async (user) => {
+export const createUserRecord = functions.auth.user().onCreate(async (user, context) => {
   const { email, uid } = user;
 
   if (!email) {
@@ -19,6 +19,6 @@ export const createUserRecord = functions.auth.user().onCreate(async (user) => {
   return userRef.set({
     uid,
     email,
-    createdAt: admin.firestore.FieldValue.serverTimestamp(),
+    createdAt: context.timestamp,
   });
 });
