@@ -20,3 +20,5 @@ export const helloWorld = onRequest((request, response) => {
 
   response.send(`Hello ${name || "World"}!`);
 });
+
+export {api} from "./app";
